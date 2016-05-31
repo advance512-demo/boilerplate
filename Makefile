@@ -2,7 +2,7 @@ DC=docker-compose
 PHP=$(DC) run --rm php
 NODE=$(DC) run --rm node
 RUBY=$(DC) run --rm ruby
-COMPOSER=$(PHP) php -n /usr/local/bin/composer
+COMPOSER=$(PHP) php /usr/local/bin/composer
 
 DC_TEST=bin/test_env.sh
 PHP_TEST=$(DC_TEST) run --rm php
@@ -26,7 +26,6 @@ stop:
 	$(DC) rm -vf
 
 build:
-	$(DC) pull
 	$(DC) build
 
 ruby-install:

@@ -43,7 +43,7 @@ RUN pecl install -o -f xdebug-2.4.0 \
 
 # Configuration
 COPY php.ini /usr/local/etc/php/php.ini
-COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+COPY xdebug.ini /usr/local/etc/php/available_extensions/xdebug.ini
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
 # Access right

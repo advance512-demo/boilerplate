@@ -8,8 +8,10 @@ set -e
 sed -ie "s/`id -u www-data`/`stat -c %u /var/www/html`/g" /etc/passwd
 
 # Disables Xdebug if not needed
-if [ "$XDEBUG" != "1" ]; then
+if [ "$XDEBUG" == "0" ]; then
     rm -f /usr/local/etc/php/conf.d/xdebug.ini
+else
+    ln -sf ../available_extensions/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 fi
 
 # Execute all commands with user www-data
