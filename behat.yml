@@ -14,11 +14,12 @@ default:
             filters:
                 tags: "~@skip"
             contexts:
+                - FeatureContext: {}
+                - BowlingContext: {}
                 - behatch:browser
                 - behatch:debug
                 - Behat\MinkExtension\Context\MinkContext
                 - ScreenshotContext: [%paths.base%/var/logs/screenshots]
-                - FeatureContext: {}
                 - CommandContext: {kernel: '@kernel'}
     extensions:
         Behat\Symfony2Extension:

@@ -6,6 +6,7 @@ use Bowling\Game;
 use Bowling\RollResult;
 use Mockery as m;
 use Tests\Unit\UnitTest;
+use UnexpectedValueException;
 
 /**
  * @method Game uut()
@@ -44,5 +45,20 @@ class RollResultTest extends UnitTest
 
         $this->verifyThat($roll->isEqual($equalRole), equalTo(true));
         $this->verifyThat($roll->isEqual($unequalRole), equalTo(false));
+    }
+
+    public function testItCreatesARollFromAStringRepresentation()
+    {
+        $this->verifyThat(RollResult::create('X'), equalTo(RollResult::STRIKE()));
+        $this->verifyThat(RollResult::create('10'), equalTo(RollResult::STRIKE()));
+        $this->verifyThat(RollResult::create('/'), equalTo(RollResult::SPARE()));
+        $this->verifyThat(RollResult::create('1'), equalTo(RollResult::ONE_PIN()));
+        $this->verifyThat(RollResult::create('2'), equalTo(RollResult::TWO_PINS()));
+    }
+    
+    public function testItThrowsExceptionWhenCreatingFromInvalidStringRepresentation()
+    {
+        $this->expectException(UnexpectedValueException::class);
+        RollResult::create('11');
     }
 }

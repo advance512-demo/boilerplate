@@ -1,3 +1,4 @@
+THIS_FILE:= $(lastword $(MAKEFILE_LIST))
 DC=docker-compose
 PHP=$(DC) run --rm php
 NODE=$(DC) run --rm node
@@ -47,7 +48,20 @@ vendors-update:
 	$(COMPOSER) update
 
 test:
-	$(PHP_TEST) 'bin/codecept build && bin/codecept -v run && bin/behat -vvv'
+	@$(MAKE) -f $(THIS_FILE) test-prepare
+	$(PHP_TEST) 'bin/codecept -v run && bin/behat -vvv'
+
+test-prepare:
+	$(PHP_TEST) bin/codecept build
+
+test-acceptance:
+	$(PHP_TEST) bin/behat -vvv
+
+test-integration:
+	$(PHP_TEST) bin/codecept -v run Integration
+
+test-unit:
+	$(PHP_TEST) bin/codecept -v run Unit
 
 codecept:
 	$(PHP_TEST) bin/codecept -v run

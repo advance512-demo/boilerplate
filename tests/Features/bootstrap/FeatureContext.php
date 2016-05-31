@@ -10,7 +10,7 @@ use Sanpi\Behatch\Context\BaseContext;
  */
 class FeatureContext extends BaseContext implements SnippetAcceptingContext
 {
-    const DESKTOP_SIZE = array('width' => 1920, 'height' => 1080);
+    const DESKTOP_SIZE = ['width' => 1920, 'height' => 1080];
     const CURRENT_WINDOW_SIZE = self::DESKTOP_SIZE;
 
     /**

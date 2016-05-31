@@ -37,21 +37,32 @@ class RollResult extends Enum
 
     public function isStrike(): bool
     {
-        return $this->getValue() === self::STRIKE;
+        return $this->getValue() === static::STRIKE;
     }
 
     public function isSpare(): bool
     {
-        return $this->getValue() === self::SPARE;
+        return $this->getValue() === static::SPARE;
     }
 
     public function isGutter(): bool
     {
-        return $this->getValue() === self::GUTTER;
+        return $this->getValue() === static::GUTTER;
     }
 
     public function isEqual(RollResult $roll): bool
     {
         return $this == $roll;
+    }
+
+    public static function create($value): RollResult
+    {
+        if ($value == 'X') {
+            return static::STRIKE();
+        } elseif ($value == '/') {
+            return static::SPARE();
+        }
+
+        return new static((int) $value);
     }
 }
