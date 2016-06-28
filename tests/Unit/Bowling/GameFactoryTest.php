@@ -60,4 +60,19 @@ class GameFactoryTest extends UnitTest
             $this->verifyThat("Roll {$roll} should be a gutter", $roll->isGutter(), equalTo(true));
         }
     }
+    
+    public function testItCreatesAGameFromArrayStringRepresentation()
+    {
+        $gameSheet = ['X', '3/', '7'];
+        $game = $this->uut()->createGameFromArray($gameSheet);
+        
+        $this->verifyThat($game, is(anInstanceOf(Game::class)));
+        $this->verifyThat(count($game->getRolls()), equalTo(4));
+        $this->verifyThat($game->getRolls(), equalTo([
+            RollResult::STRIKE(),
+            RollResult::THREE_PINS(),
+            RollResult::SPARE(),
+            RollResult::SEVEN_PINS(),
+        ]));
+    }
 }

@@ -3,6 +3,7 @@
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
 use Bowling\Game;
+use Bowling\GameFactory;
 use Bowling\RollResult;
 use Bowling\ScoreListener;
 use Tests\Codeception\TestCase\Hamcrest;
@@ -29,6 +30,8 @@ class BowlingContext implements Context
      */
     public function theScoreShouldBe(string $expectedScore)
     {
+        //todo: we need to be able to calculate the score on a pre-rolled game
+        
         foreach ($this->sheet->getRows() as $gameSheet) {
             $game = new Game();
             $game->addRollListener(new ScoreListener());

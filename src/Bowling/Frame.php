@@ -67,11 +67,18 @@ class Frame
 
     public function addToScore(int $score)
     {
-        if ($this->score + $score > self::MAX_SCORE_PER_FRAME) {
-            $this->score = self::MAX_SCORE_PER_FRAME;
+        $futureScore = $this->getScore() + $score;
+
+        if ($futureScore > self::MAX_SCORE_PER_FRAME) {
+            $this->setScore(self::MAX_SCORE_PER_FRAME);
         } else {
-            $this->score += $score;
+            $this->setScore($futureScore);
         }
+    }
+
+    public function setScore(int $score)
+    {
+        $this->score = $score;
     }
 
     public function getScore(): int

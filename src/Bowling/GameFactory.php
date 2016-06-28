@@ -47,4 +47,26 @@ class GameFactory
 
         return $game;
     }
+
+    /**
+     * Creates a game from an array with string representations of rolls.
+     *
+     * For example:
+     *
+     * ['X', '3/', 'X', '5', ...]
+     */
+    public function createGameFromArray(array $frames): Game
+    {
+        $game = new Game();
+        foreach ($frames as $frame) {
+            $game->roll(RollResult::create($frame{0}));
+
+            if (strlen($frame) > 1) {
+                $game->roll(RollResult::create($frame{1}));
+            }
+        }
+
+        return $game;
+    }
+
 }
