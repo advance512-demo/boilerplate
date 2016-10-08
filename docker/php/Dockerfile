@@ -1,6 +1,6 @@
 #The tools container might be a little bit big here.
 #We should probably look into splitting this file.
-FROM php:7
+FROM php:7.0.11
 
 # Environment variable
 ENV SYMFONY_ENV prod
