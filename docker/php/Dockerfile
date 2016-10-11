@@ -43,9 +43,9 @@ RUN pecl install -o -f xdebug-2.4.0 \
     && rm -rf /tmp/pear
 
 # Configuration
-COPY docker/php/php.ini /usr/local/etc/php/php.ini
-COPY docker/php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
-COPY docker/php/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY php.ini /usr/local/etc/php/php.ini
+COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
 # Access right
 RUN mkdir -p /var/www/html
