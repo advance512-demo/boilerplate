@@ -3,7 +3,6 @@
 FROM php:7.0.11
 
 # Environment variable
-ENV SYMFONY_ENV prod
 ENV APCU_VERSION 5.1.2
 ENV APCU_BC_VERSION 1.0.0
 
