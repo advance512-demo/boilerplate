@@ -9,5 +9,5 @@ RUN mkdir -p /var/www/.bundler
 
 WORKDIR /var/www/html
 
-COPY docker/ruby/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
