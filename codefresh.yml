@@ -1,38 +1,10 @@
 version: '1.0'
 steps:
 
-  build-fpm-image:
-    type: build
-    description: Build the fpm image
-    dockerfile: docker/fpm/Dockerfile
-    image-name: advance512demo/boilerplate-fpm
-    working-directory: ${{initial-clone}}
-
   build-nginx-image:
     type: build
     description: Build the nginx image
-    dockerfile: docker/nginx/Dockerfile
+    dockerfile: Dockerfile
     image-name: advance512demo/boilerplate-nginx
-    working-directory: ${{initial-clone}}
-    
-  build-node-image:
-    type: build
-    description: Build the node image
-    dockerfile: docker/node/Dockerfile
-    image-name: advance512demo/boilerplate-node
-    working-directory: ${{initial-clone}}
-    
-  build-php-image:
-    type: build
-    description: Build the php image
-    dockerfile: docker/php/Dockerfile
-    image-name: advance512demo/boilerplate-php
-    working-directory: ${{initial-clone}}
-    
-  build-ruby-image:
-    type: build
-    description: Build the ruby image
-    dockerfile: docker/ruby/Dockerfile
-    image-name: advance512demo/boilerplate-ruby
-    working-directory: ${{initial-clone}}
+    working-directory: ${{initial-clone}}/docker/nginx
     
