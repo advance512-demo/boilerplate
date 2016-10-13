@@ -1,0 +1,63 @@
+version: '1.0'
+steps:
+
+  build-fpm-image:
+    type: build
+    description: Build the fpm image
+    dockerfile: docker/fpm/Dockerfile
+    image-name: advance512demo/boilerplate-fpm
+    working-directory: ${{initial-clone}}
+
+  push-fpm-image:
+    type: push
+    description: Push the fpm image to the Docker registry.
+    candidate: ${{build-fpm-image}}
+
+  build-nginx-image:
+    type: build
+    description: Build the nginx image
+    dockerfile: docker/nginx/Dockerfile
+    image-name: advance512demo/boilerplate-nginx
+    working-directory: ${{initial-clone}}
+    
+  push-nginx-image:
+    type: push
+    description: Push the nginx image to the Docker registry.
+    candidate: ${{build-nginx-image}}
+
+  build-node-image:
+    type: build
+    description: Build the node image
+    dockerfile: docker/node/Dockerfile
+    image-name: advance512demo/boilerplate-node
+    working-directory: ${{initial-clone}}
+    
+  push-node-image:
+    type: push
+    description: Push the node image to the Docker registry.
+    candidate: ${{build-node-image}}
+
+  build-php-image:
+    type: build
+    description: Build the php image
+    dockerfile: docker/php/Dockerfile
+    image-name: advance512demo/boilerplate-php
+    working-directory: docker/php
+    
+  push-php-image:
+    type: push
+    description: Push the php image to the Docker registry.
+    candidate: ${{build-php-image}}
+
+  build-ruby-image:
+    type: build
+    description: Build the ruby image
+    dockerfile: docker/ruby/Dockerfile
+    image-name: advance512demo/boilerplate-ruby
+    working-directory: ${{initial-clone}}
+    
+  push-ruby-image:
+    type: push
+    description: Push the ruby image to the Docker registry.
+    candidate: ${{build-ruby-image}}
+
