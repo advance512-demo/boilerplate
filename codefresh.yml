@@ -27,7 +27,7 @@ steps:
     description: Build the php image
     dockerfile: docker/php/Dockerfile
     image-name: advance512demo/boilerplate-php
-    working-directory: docker/php
+    working-directory: ${{initial-clone}}
     
   build-ruby-image:
     type: build
