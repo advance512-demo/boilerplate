@@ -7,4 +7,28 @@ steps:
     dockerfile: Dockerfile
     image-name: advance512demo/boilerplate-nginx
     working-directory: ${{initial-clone}}/docker/nginx
+   
+  build-fpm-image:
+    type: build
+    description: Build the fpm image
+    image-name: advance512demo/boilerplate-fpm
+    working-directory: ${{initial-clone}}/nginx/fpm
+ 
+  build-node-image:
+    type: build
+    description: Build the node image
+    image-name: advance512demo/boilerplate-node
+    working-directory: ${{initial-clone}}/nginx/node
+    
+  build-php-image:
+    type: build
+    description: Build the php image
+    image-name: advance512demo/boilerplate-php
+    working-directory: ${{initial-clone}}/nginx/php
+    
+  build-ruby-image:
+    type: build
+    description: Build the ruby image
+    image-name: advance512demo/boilerplate-ruby
+    working-directory: ${{initial-clone}}/nginx/ruby
     
