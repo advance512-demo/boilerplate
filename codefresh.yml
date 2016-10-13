@@ -8,11 +8,6 @@ steps:
     image-name: advance512demo/boilerplate-fpm
     working-directory: ${{initial-clone}}
 
-  push-fpm-image:
-    type: push
-    description: Push the fpm image to the Docker registry.
-    candidate: ${{build-fpm-image}}
-
   build-nginx-image:
     type: build
     description: Build the nginx image
@@ -20,11 +15,6 @@ steps:
     image-name: advance512demo/boilerplate-nginx
     working-directory: ${{initial-clone}}
     
-  push-nginx-image:
-    type: push
-    description: Push the nginx image to the Docker registry.
-    candidate: ${{build-nginx-image}}
-
   build-node-image:
     type: build
     description: Build the node image
@@ -32,11 +22,6 @@ steps:
     image-name: advance512demo/boilerplate-node
     working-directory: ${{initial-clone}}
     
-  push-node-image:
-    type: push
-    description: Push the node image to the Docker registry.
-    candidate: ${{build-node-image}}
-
   build-php-image:
     type: build
     description: Build the php image
@@ -56,8 +41,3 @@ steps:
     image-name: advance512demo/boilerplate-ruby
     working-directory: ${{initial-clone}}
     
-  push-ruby-image:
-    type: push
-    description: Push the ruby image to the Docker registry.
-    candidate: ${{build-ruby-image}}
-
