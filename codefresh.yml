@@ -29,11 +29,6 @@ steps:
     image-name: advance512demo/boilerplate-php
     working-directory: docker/php
     
-  push-php-image:
-    type: push
-    description: Push the php image to the Docker registry.
-    candidate: ${{build-php-image}}
-
   build-ruby-image:
     type: build
     description: Build the ruby image
